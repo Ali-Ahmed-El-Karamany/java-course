@@ -18,6 +18,7 @@ public class MadLibs {
         //3- Get the adjective
         System.out.println("Enter an adjective");
         String adjective = scanner.next();
+        scanner.close();
 
         //4- print the whole sentence
         System.out.println("On a " + adjective + " " +
