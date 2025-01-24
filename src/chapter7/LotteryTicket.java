@@ -5,14 +5,15 @@ import java.util.Random;
 
 /*
  * The LotteryTicket class generates a lottery ticket with a specified number of random numbers,
- * and prints it. The ticket generation ensures that numbers are within a defined range.
+ * ensures the numbers are unique, and prints the ticket. The ticket generation ensures that
+ * numbers are within a defined range.
  */
 public class LotteryTicket {
 
-    // Constant for the number of numbers in a lottery ticket
+    // Constant number to initialize the length of lottery ticket array
     private static final int LENGTH = 6;
 
-    // Maximum value for a ticket number (inclusive)
+    // Maximum value for a ticket number
     private static final int MAX_TICKET_NUMBER = 69;
 
     public static void main(String[] args){
@@ -24,11 +25,11 @@ public class LotteryTicket {
         printTicket(ticket);
     }
 
-    /*
-     * Generates an array of random lottery ticket numbers.
+    /**
+     * Generates an array of random lottery ticket numbers, ensuring no duplicates.
      * Each number is within the range [1, MAX_TICKET_NUMBER].
      *
-     * @return an array containing the randomly generated ticket numbers
+     * @return an array containing the unique randomly generated ticket numbers
      */
     public static int[] generateNumbers(){
 
@@ -38,13 +39,44 @@ public class LotteryTicket {
         // Create an instance of the Random class for generating random numbers
         Random random = new Random();
 
-        // Generate random numbers for each element in the ticket array
+
+        // Generate unique random numbers for each element in the ticket array
         for(int i = 0; i < LENGTH; i++){
-            // Generate a random number between 1 and MAX_TICKET_NUMBER
-            ticket[i] = random.nextInt(MAX_TICKET_NUMBER) + 1;
+
+            int randomNumber;
+            // Search the array to make sure that the number generated will be unique
+            do{
+                // Generate a random number within the valid range
+                randomNumber = random.nextInt(MAX_TICKET_NUMBER) + 1;
+            }while(linearSearch(ticket, randomNumber)); // Ensure no duplicates
+
+            ticket[i] = randomNumber;
         }
 
-        return ticket; // Return the generated ticket
+        return ticket; // Return the generated ticket of unique numbers
+    }
+
+    /**
+     *Performs a linear search to check if a number exists in the array
+     *
+     * @param array Array to search in
+     * @param numberToSearchFor Value to search for in the array
+     * @return true if the number exists, false otherwise
+     */
+    public static boolean linearSearch(int[] array, int numberToSearchFor)
+    {
+        /* Enhanced for loop:
+         * Iterates through the array and
+         * each time assigns the current element of the array to value
+         */
+        for(int value : array)
+        {
+            if(value == numberToSearchFor)
+            {
+                return true;    // Number found
+            }
+        }
+        return false;   // Number not found
     }
 
     /*
