@@ -12,6 +12,11 @@ public class Person {
     private int age;       // The age of the person
     private String gender; // The gender of the person
 
+    public Person()
+    {
+        System.out.println("Person constructor");
+    }
+
     /**
      * Gets the name of the person.
      *

@@ -10,6 +10,11 @@ public class Employee extends Person {
     private String employeeId; // The unique identifier for the employee
     private String title;      // The job title of the employee
 
+    public Employee()
+    {
+        System.out.println("Employee constructor");
+    }
+
     /**
      * Gets the employee ID of the employee.
      *
