@@ -12,6 +12,11 @@ public class Employee extends Person {
 
     public Employee()
     {
+         /*
+          *If the there is no default constructor in the super class,
+          * we have to call one of the constructors that exists.
+          */
+        super("Ali");
         System.out.println("Employee constructor");
     }
 
