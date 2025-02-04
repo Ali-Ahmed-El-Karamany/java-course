@@ -29,7 +29,7 @@ class HandleError {
                 a = 12345 / (b / c);
             } catch (ArithmeticException e) {
                 // Handling division by zero error
-                System.out.println("Division by zero encountered.");
+                System.out.println("Exception: "+ e);
 
                 // Setting 'a' to zero to allow program execution to continue
                 a = 0;
